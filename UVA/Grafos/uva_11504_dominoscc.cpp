@@ -23,7 +23,6 @@ vi stk;
 int dfs_cnt;
 int cnt;
 int scc[N];
-vi root;
 struct Aresta {
     int x;
     int y;
@@ -70,7 +69,6 @@ int main() {
         }
         dfs_low.assign(n+5, -1); dfs_num.assign(n+5, -1);
         visited.assign(n+5, false);
-        root.clear();
         dfs_cnt = cnt = 0;
         int ans = 0;
         
