@@ -38,11 +38,11 @@ class UnionFind {
         if(!isSameSet(i, j)) {
             int x = findSet(i), y = findSet(j);
             if(rank[x] > rank[y]) {
-                p[y] = x;
                 setSize[findSet(x)] += setSize[findSet(y)];
+                p[y] = x;
             } else {
-                p[x] = y;
                 setSize[findSet(y)] += setSize[findSet(x)];
+                p[x] = y;
                 if(rank[x] == rank[y]) rank[y]++;
             }
             numSets--;
