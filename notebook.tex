@@ -1,0 +1,243 @@
+\documentclass[a4paper,10pt,oneside]{article}
+% \setcounter{secnumdepth}{-1} 
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{courier}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{pdflscape}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage[inline]{enumitem}
+\usepackage{verbatim}
+\usepackage{pxfonts}
+%\usepackage{algorithmic}
+\usepackage{algorithm2e}
+%\usepackage{algorithmicx}
+%\usepackage{program}
+%\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\usepackage[top=2cm, bottom=1.5cm, left=1cm, right=1cm]{geometry}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\renewcommand{\subsectionmark}[1]{\markright{#1}}
+
+\fancyhf{}
+%\rhead{\fancyplain{}{\nouppercase{\rightmark}}, page \bfseries\thepage}
+%\rhead{\leftmark\ \-- \rightmark}
+\rhead{\leftmark, \thepage}
+
+%\lhead{É dificil xover um nome}
+\lhead{University of Brasilia}
+%\chead{É dificil xover um nome}
+\cfoot{\thepage}
+
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0pt}{2ex}{1ex}
+
+%\definecolor{dkgray}{rgb}{0.4,0.4,0.4}
+\definecolor{gray}{rgb}{0.6,0.6,0.6}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+%\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+	language=c++,
+	tabsize=4,
+	%frame=tb,
+	aboveskip=.1em,
+	belowskip=.1em,
+	showstringspaces=false,
+	basicstyle={\small\ttfamily},
+	columns=fullflexible,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	numbers=none,
+	%keywordstyle=\bfseries,
+	breaklines=true,
+	breakindent=1.1em,
+	breakatwhitespace=false,
+	commentstyle=\color{gray},
+}
+
+\newcommand\includes[2]{
+   \subsection{#1}
+   \lstinputlisting{#2}
+}
+
+\setlength{\columnseprule}{1pt}
+
+\date{}
+%\title{100\% É Pouco,Pagode Importa D+}
+\title{ICPC Team Reference}
+\author{University of Brasilia}
+
+\begin{document}
+\maketitle
+\begin{multicols}{2}
+\tableofcontents
+\newpage
+\thispagestyle{fancy}
+
+\lstinputlisting[language=bash]{vimrc}
+
+\lstinputlisting[language=bash]{bashrc}
+
+\section{Data Structures}
+\includes{Merge Sort Tree}{code/ed/merge_sort_tree.cpp}
+\includes{Wavelet Tree}{code/ed/wavelet_tree.cpp}
+\includes{Order Set}{code/ed/order_set.cpp}
+\includes{Hash table}{code/ed/hash_table.cpp}
+\includes{Convex Hull Trick Simple}{code/ed/cht_simple.cpp}
+\includes{Convex Hull Trick}{code/ed/cht.cpp}
+\includes{Min queue}{code/ed/minq.cpp}
+\includes{Sparse Table}{code/ed/sparse_table.cpp}
+\includes{Treap}{code/ed/treap.cpp}
+\includes{ColorUpdate}{code/misc/ColorUpdate.cpp}
+\includes{Heavy Light Decomposition}{code/ed/hld.cpp}
+\includes{Iterative Segtree}{code/ed/segtree.cpp}
+\includes{LiChao's Segtree}{code/ed/lichao.cpp}
+\includes{Palindromic tree}{code/ed/eertree.cpp}
+
+
+\section{Math}
+\includes{Extended Euclidean Algorithm}{code/math/euclides.cpp}
+\includes{Chinese Remainder Theorem}{code/math/crt.cpp}
+\includes{Preffix inverse}{code/math/inv.cpp}
+\includes{Pollard Rho}{code/math/pollard_rho.cpp}
+\includes{Miller Rabin}{code/math/miller_rabin.cpp}
+\includes{Totiente}{code/math/tot.cpp}
+\includes{Mobius Function}{code/math/mobius.cpp}
+\includes{Mulmod TOP}{code/math/mod.cpp}
+\includes{Matrix Determinant}{code/math/det.cpp}
+\includes{Simplex Method}{code/math/simplex.cpp}
+\includes{FFT}{code/fft.cpp}
+\includes{NTT}{code/ntt.cpp}
+
+\section{Graphs}
+\includes{Dinic}{code/graph/dinic.cpp}
+\includes{Min Cost Max Flow}{code/graph/mcmf.cpp}
+\includes{Small to Large}{code/graph/stl.cpp}
+\includes{Junior e Falta de Ideias}{code/graph/centroid_decomp.cpp}
+\includes{Kosaraju}{code/graph/kosaraju.cpp}
+\includes{Tarjan}{code/graph/tarjan.cpp}
+\includes{Max Clique}{code/graph/maxcliq.cpp}
+\includes{Dominator Tree}{code/graph/dominator_tree.cpp}
+\includes{Min Cost Matching}{code/graph/hungarian_mcm.cpp}
+
+\section{Strings}
+\includes{Aho Corasick}{code/string/aho_corasick.cpp}
+\includes{Suffix Array}{code/string/suffix_array.cpp}
+\includes{Z Algorithm}{code/string/z_algo.cpp}
+\includes{Prefix function/KMP}{code/string/pf.cpp}
+\includes{Min rotation}{code/string/min_rot.cpp}
+\includes{All palindrome}{code/string/all_palindrome.cpp}
+\includes{Manacher}{code/string/manacher.cpp}
+\includes{Palindromic Tree}{code/string/ptree.cpp}
+\includes{Suffix Automaton}{code/string/suffix_automaton.cpp}
+\includes{Suffix Tree}{code/ed/suffix_tree.cpp}
+
+\section{Geometry}
+\includes{2D basics}{code/geometry/2D.cpp}
+\includes{Nearest Points}{code/geometry/near.cpp}
+\includes{Convex Hull}{code/geometry/convexhull.cpp}
+\includes{Check point inside polygon}{code/geometry/in_poly.cpp}
+\includes{Check point inside polygon without lower/upper hull}{code/geometry/in_poly2.cpp}
+\includes{Minkowski sum}{code/geometry/mink.cpp}
+
+\section{Miscellaneous}
+\includes{LIS}{code/misc/lis.cpp}
+\includes{DSU rollback}{code/misc/bipar.cpp}
+\includes{Buildings}{code/misc/burn.cpp}
+\includes{Rand}{code/misc/rand.cpp}
+\includes{Klondike}{code/misc/klondike.cpp}
+\includes{Hilbert Order}{code/misc/hilbert_order.cpp}
+\includes{Modular Factorial}{code/misc/factmod.cpp}
+\includes{Enumeration all submasks of a bitmask}{code/misc/submasks.cpp}
+\includes{Slope Trick}{code/misc/slope.cpp}
+\includes{Fast IO}{code/misc/fastio.cpp}
+% \includes{Big int}{code/misc/bigint.cpp}
+\includes{Knapsack Bounded with Cost}{code/misc/knapsack_bounded_cost.cpp}
+\includes{LCA \textless O(nlgn), O(1)\textgreater}{code/misc/lca.cpp}
+
+
+\subsection{Burnside's Lemma}
+Let $(G, \oplus)$ be a finite group that acts on a set $X$. It should hold that $e_g*x=x$ and $g_1 *(g_2 * x) = (g_1 \oplus g_2) * x$, $\forall x \in X, g_1, g_2 \in G$. For each $g \in G$ let $X^g = \{x \in X \mid g*x = x \}$. The number of orbits its given by:
+
+$\mid X / G\mid~= \frac{1}{|G|} \sum_{g \in G}{|X^g|}$
+
+\subsection{Wilson's Theorem}
+$(n-1)! = -1 \mod n \iff n\text{ is prime}$
+
+\subsection{Fibonacci}
+\begin{itemize}
+\item $F_{n-1}F_{n+1} - F_n^2 = (-1)^n$
+\item $F_{n+k} = F_kF_{n+1} + F_{k-1}F_n$
+\item $GCD(F_n, F_m) = F_{GCD(n, m)}$
+\item $F_n = \frac{(\frac{1+\sqrt{5}}{2})^n - (\frac{1-\sqrt{5}}{2})^n}{\sqrt{5}}$
+\end{itemize}
+
+\subsection{Kirchhoff's Theorem}
+Laplacian matrix is $L = D - A$, where $D$ is a diagonal matrix with vertex degrees on the diagonals and $A$ is adjacency matrix.
+
+The number of spanning trees is any cofactor of L. i-th cofactor is determinant of the matrix gotten by removing i-th row and column of L.
+
+\subsubsection{Multigraphs}
+In $D[i][i]$ all loops are excluded. $A[i][j]$ = number of edges from $i$ to $j$.
+
+\subsubsection{Directed multigraphs}
+$D[i][i]$ = indegree of i minus the number of loops at i. $A[i][j]$ = number of edges from $i$ to $j$.
+
+The number of oriented spanning trees rooted at a vertex i is the determinant of the matrix gotten by removing the ith row and column of L.
+
+\subsection{Edge coloring}
+
+\begin{algorithm}[H]
+\SetAlgoLined
+\KwData{A graph G}
+\KwResult{A proper coloring c of the edges of G}
+Let U := E(G)\;
+\While{$U \not= \emptyset$}{
+Let (u,v) be any edge in U\;
+Let F[1:k] be a maximal fan of u starting at F[1]=v\;
+Let c be a color that is free on u and d be a color that is free on F[k]\;
+Invert the $cd_u$ path\;
+Let $w \in V(G)$ be such that $w \in F, F'=[F[1]...w]$ is a fan and d is free on w\;
+Rotate F' and set c(u,w)=d\;
+U := U - {(u,v)}\;
+}
+\end{algorithm}
+
+\subsection{Notes}
+When we repeat something and each time we have probability $p$ to succeed then the expected number or tries is $\frac{1}{p}$, till we succeed.
+
+\textbf{Small to large}
+
+\textbf{Trick in statement} If $k$ sets are given you should note that the amount of different set sizes is $O(\sqrt{s})$ where $s$ is total size of those sets. And no more than $\sqrt{s}$ sets have size greater than $\sqrt{s}$. For example, a path to the root in Aho-Corasick through suffix links will have at most $O(\sqrt{s})$ vertices.
+
+\textbf{gcd on subsegment}, we have at most $\log(a_i)$ different values in $\{\gcd(a_j, a_{j+1}, ..., a_i)$ for $j < i\}$.
+
+\textbf{From static set to expandable}. To insert, create a new set with the new element. While there are two sets with same size, merge them. There will be at most $\log(n)$ disjoints sets.
+
+\textbf{Matrix exponentiation optimization}. Save binary power of $A_{nxn}$ and answer $q$ queries $b = A^mx$ in $O((n^3 + qn^2)log(m))$.
+
+\textbf{Ternary search on integers into binary search}, comparing f(mid) and f(mid+1), binary search on derivative
+
+\textbf{Dynamic offline set} For each element we will wind segment of time $[a, b]$ such that element is present in the set during this whole segment. Now we can come up with recursive procedure which handles $[l, r]$ time segment considering that all elements such that $[l, r] \subset [a, b]$ are already included into the set. Now, keeping this invariant we recursively go into $[l, m]$ and $[m+1, r]$ subsegments. Finally when we come into segment of length 1.
+
+$a > b \implies a \mod b < \frac{a}{2}$
+
+\end{multicols}
+
+
+\end{document}
