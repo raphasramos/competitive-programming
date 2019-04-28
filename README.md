@@ -1,2 +1,1 @@
-# Maratona
-Alguns exercícios de Programação Competitiva resolvidos
+# icpc-notebook

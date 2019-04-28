@@ -15,10 +15,12 @@
 \usepackage{pxfonts}
 %\usepackage{algorithmic}
 \usepackage{algorithm2e}
+%\usepackage{algorithm}
+\usepackage{algpseudocode}
 %\usepackage{algorithmicx}
 %\usepackage{program}
 %\usepackage{algorithm}
-\usepackage[noend]{algpseudocode}
+%\usepackage[noend]{algpseudocode}
 
 \usepackage[top=2cm, bottom=1.5cm, left=1cm, right=1cm]{geometry}
 \usepackage{multicol}
@@ -74,6 +76,10 @@
    \subsection{#1}
    \lstinputlisting{#2}
 }
+\newcommand\includess[2]{
+   \subsubsection{#1}
+   \lstinputlisting{#2}
+}
 
 \setlength{\columnseprule}{1pt}
 
@@ -99,7 +105,8 @@
 \includes{Order Set}{code/ed/order_set.cpp}
 \includes{Hash table}{code/ed/hash_table.cpp}
 \includes{Convex Hull Trick Simple}{code/ed/cht_simple.cpp}
-\includes{Convex Hull Trick}{code/ed/cht.cpp}
+% \includes{Convex Hull Trick}{code/ed/cht.cpp}
+\includes{Convex Hull Trick}{code/ed/LineContainer.cpp}
 \includes{Min queue}{code/ed/minq.cpp}
 \includes{Sparse Table}{code/ed/sparse_table.cpp}
 \includes{Treap}{code/ed/treap.cpp}
@@ -109,26 +116,33 @@
 \includes{LiChao's Segtree}{code/ed/lichao.cpp}
 \includes{Palindromic tree}{code/ed/eertree.cpp}
 
-
 \section{Math}
 \includes{Extended Euclidean Algorithm}{code/math/euclides.cpp}
 \includes{Chinese Remainder Theorem}{code/math/crt.cpp}
 \includes{Preffix inverse}{code/math/inv.cpp}
 \includes{Pollard Rho}{code/math/pollard_rho.cpp}
 \includes{Miller Rabin}{code/math/miller_rabin.cpp}
-\includes{Totiente}{code/math/tot.cpp}
+% \includes{Totiente}{code/math/tot.cpp}
+\includes{Primitive root}{code/math/primitive_root.cpp}
 \includes{Mobius Function}{code/math/mobius.cpp}
 \includes{Mulmod TOP}{code/math/mod.cpp}
 \includes{Matrix Determinant}{code/math/det.cpp}
 \includes{Simplex Method}{code/math/simplex.cpp}
 \includes{FFT}{code/fft.cpp}
+\includes{FFT Tourist}{code/fft_tourist.cpp}
 \includes{NTT}{code/ntt.cpp}
+\includes{Gauss}{code/gauss.cpp}
+\includes{Gauss Xor}{code/gauss_xor.cpp}
+\includes{Simpson}{code/math/simpson.cpp}
 
 \section{Graphs}
 \includes{Dinic}{code/graph/dinic.cpp}
+\includes{Push relabel}{code/graph/pushrelabel.cpp}
 \includes{Min Cost Max Flow}{code/graph/mcmf.cpp}
+\includes{Blossom Algorithm for General Matching}{code/graph/blossom.cpp}
+\includes{Blossom Algorithm for Weighted General Matching}{code/graph/weight_blossom.cpp}
 \includes{Small to Large}{code/graph/stl.cpp}
-\includes{Junior e Falta de Ideias}{code/graph/centroid_decomp.cpp}
+\includes{Centroid Decomposition}{code/graph/centroid_decomp.cpp}
 \includes{Kosaraju}{code/graph/kosaraju.cpp}
 \includes{Tarjan}{code/graph/tarjan.cpp}
 \includes{Max Clique}{code/graph/maxcliq.cpp}
@@ -142,34 +156,57 @@
 \includes{Prefix function/KMP}{code/string/pf.cpp}
 \includes{Min rotation}{code/string/min_rot.cpp}
 \includes{All palindrome}{code/string/all_palindrome.cpp}
-\includes{Manacher}{code/string/manacher.cpp}
-\includes{Palindromic Tree}{code/string/ptree.cpp}
+% \includes{Manacher}{code/string/manacher.cpp}
+% \includes{Palindromic Tree}{code/string/ptree.cpp}
 \includes{Suffix Automaton}{code/string/suffix_automaton.cpp}
 \includes{Suffix Tree}{code/ed/suffix_tree.cpp}
 
 \section{Geometry}
 \includes{2D basics}{code/geometry/2D.cpp}
-\includes{Nearest Points}{code/geometry/near.cpp}
+% \includes{Nearest Points}{code/geometry/near.cpp}
+\includes{Circle line intersection}{code/geometry/circle_line_intersection.cpp}
+\includes{Half plane intersection}{code/geometry/halfplane.cpp}
+\includes{Detect empty Half plane intersection}{code/geometry/detect_halfplane.cpp}
+
+\subsection{Circle Circle intersection}
+Assume that the first circle is centered at the origin and second at $(x2, y2)$. Find circle line intersection of first circle and line $Ax + By + C = 0$, where $A = -2x_2$, $B = -2y_2$, $C = x_2^2 + y_2^2 + r_1^2 - r_2^2$.
+
+Be aware of corner case with two circles centered at the same point.
+\includes{Tangents of two circles}{code/geometry/tangents.cpp}
 \includes{Convex Hull}{code/geometry/convexhull.cpp}
 \includes{Check point inside polygon}{code/geometry/in_poly.cpp}
 \includes{Check point inside polygon without lower/upper hull}{code/geometry/in_poly2.cpp}
 \includes{Minkowski sum}{code/geometry/mink.cpp}
+\subsection{Geo Notes}
+\subsubsection{Center of mass}
+\textbf{System of points(2D/3D):} Mass weighted average of points. \\
+\textbf{Frame(2D/3D):} Get middle point of each segment solve as previously. \\
+\textbf{Triangle:} Average of vertices. \\
+\textbf{2D Polygon:} Compute \textbf{signed} area and center of mass of triangle $((0, 0), p_i, p_{i+1})$. Then solve as system of points.\\
+\textbf{Polyhedron surface:} Solve each face as a 2D polygon(be aware of (0, 0)) then replace each face with its center of mass and solve as system of points. \\
+\textbf{Tetrahedron(Triangular pyramid):} As triangles, its the average of points. \\
+\textbf{Polyhedron:} Can be done as 2D polygon, but with tetrahedralization intead of triangulation.
+
+\subsubsection{Pick's Theorem}
+Given a polygon without self-intersections and all its vertices on integer coordinates in some 2D grid. Let $A$ be its area, $I$ the number of points with interger coordinates stricly inside the polygon and $B$ the number of points with interger coordinates in the border of the polygon. The following formula holds: $A = I + \frac{B}{2} - 1$.
 
 \section{Miscellaneous}
 \includes{LIS}{code/misc/lis.cpp}
 \includes{DSU rollback}{code/misc/bipar.cpp}
 \includes{Buildings}{code/misc/burn.cpp}
 \includes{Rand}{code/misc/rand.cpp}
-\includes{Klondike}{code/misc/klondike.cpp}
+% \includes{Klondike}{code/misc/klondike.cpp}
 \includes{Hilbert Order}{code/misc/hilbert_order.cpp}
 \includes{Modular Factorial}{code/misc/factmod.cpp}
 \includes{Enumeration all submasks of a bitmask}{code/misc/submasks.cpp}
 \includes{Slope Trick}{code/misc/slope.cpp}
-\includes{Fast IO}{code/misc/fastio.cpp}
+% \includes{Fast IO}{code/misc/fastio.cpp}
 % \includes{Big int}{code/misc/bigint.cpp}
 \includes{Knapsack Bounded with Cost}{code/misc/knapsack_bounded_cost.cpp}
 \includes{LCA \textless O(nlgn), O(1)\textgreater}{code/misc/lca.cpp}
-
+\includes{Buffered reader}{code/misc/buffered_reader.cpp}
+\includes{Modular summation}{code/misc/sum_mod.cpp}
+\includes{Edge coloring CPP}{code/misc/edge_coloring.cpp}
 
 \subsection{Burnside's Lemma}
 Let $(G, \oplus)$ be a finite group that acts on a set $X$. It should hold that $e_g*x=x$ and $g_1 *(g_2 * x) = (g_1 \oplus g_2) * x$, $\forall x \in X, g_1, g_2 \in G$. For each $g \in G$ let $X^g = \{x \in X \mid g*x = x \}$. The number of orbits its given by:
@@ -200,23 +237,87 @@ $D[i][i]$ = indegree of i minus the number of loops at i. $A[i][j]$ = number of 
 
 The number of oriented spanning trees rooted at a vertex i is the determinant of the matrix gotten by removing the ith row and column of L.
 
-\subsection{Edge coloring}
+\subsection{Matroid}
+Let $X$ set of objects, $I \subseteq 2^X$ set of independents sets such that:
+\begin{enumerate}
+\item $\emptyset \in I$
+\item $A \in I, B \subseteq A \implies B \in I$
+\item Exchange axiom, $A \in I, B \in I, |B| > |A| \implies \exists x \in B \setminus A : A \cup \{x\} \in I$
+\item $A \subseteq X$ and $I$ and $I'$ are maximal independent subsets of A then $|I| = |I'|$
+\end{enumerate}
+Then $(X, I)$ is a matroid. The combinatorial optimization problem associated with it is: Given a weight $w(e) \geq 0 ~\forall e \in X$, find an independet subset that has the largest possible total weight.
 
-\begin{algorithm}[H]
-\SetAlgoLined
-\KwData{A graph G}
-\KwResult{A proper coloring c of the edges of G}
-Let U := E(G)\;
-\While{$U \not= \emptyset$}{
-Let (u,v) be any edge in U\;
-Let F[1:k] be a maximal fan of u starting at F[1]=v\;
-Let c be a color that is free on u and d be a color that is free on F[k]\;
-Invert the $cd_u$ path\;
-Let $w \in V(G)$ be such that $w \in F, F'=[F[1]...w]$ is a fan and d is free on w\;
-Rotate F' and set c(u,w)=d\;
-U := U - {(u,v)}\;
-}
-\end{algorithm}
+%\subsubsection{Matroid intersection algorithm}
+%\begin{algorithm}[H]
+%\SetAlgoLined
+%\KwData{Two matroids $(X, I_a)$ and $(X, I_b)$}
+%\KwResult{Set $I$ with maximum size, $I \in I_a$ and $I \in I_b$}
+%$I := \emptyset$\;
+%\While{True}{
+%	\For{$e_i \in X\setminus I$}{
+%		\If{$I+e_i \in I_a$ and $I+e_i \in I_b$}{
+%			$I = I + e_i$
+%		}
+%	}
+%	$A = \emptyset, Q = \emptyset, T = \emptyset$\Comment Q is a queue\;
+%	label[$x \in X$] = MARK1\;
+%	\For{$e_i \in X\setminus I$}{
+%		\eIf{$I+e_i \in I_a$}{
+%			$Q$.push($e_i$), label[$e_i$] := MARK2
+%		}{
+%			\For{$x \in I \mid I\setminus\{x\} \cup \{e_i\} \in I_a$}{ $A := A \cup \{(x, e_i)\}$}
+%		}
+%		\eIf{$I+e_i \in I_b$}{
+%			$T := T \cup \{e_i\}$
+%		}{
+%			\For{$x \in I \mid I\setminus\{x\} \cup \{e_i\} \in I_b$}{ $A := A \cup \{(e_i, x)\}$}			
+%		}
+%	}
+%	\If{$T = \emptyset$}{break}
+%	found := False\;
+%	\While{$Q \not= \emptyset$ and $found = False$}{
+%		e := $Q$.front(), $Q$.pop()\;
+%		\For{$x \mid (e, x) \in A$ and label[$x$] = MARK1}{
+%			label[$x$] = $e$\;
+%			$Q$.push($x$)\;
+%			\If{$x \in T$}{
+%				found := True\;
+%				$I := I ~\oplus$ path($x$)\;
+%				break\;
+%			}
+%		}
+%	}
+%	\If{found = False}{break}
+%}
+%\end{algorithm}
+
+\includess{Matroid intersection}{code/matroid.cpp}
+
+Where path(e) = [e] if label[e] = MARK2, path(label[e]) + [e] otherwise.
+
+\subsubsection{Matroid Union}
+Given $k$ matroids over the same set of objects $(X, I_1)$, $(X, I_2)$, \dots, $(X, I_k)$ find $A_1 \in I_1$, $A_2 \in I_2$, \dots, $A_k \in I_k$ such that $i \not= j, A_i \cap A_j = \emptyset$ and $|\bigcup\limits_{i=1}^{k} A_i|$ is maximum. Matroid union can be reduced to matroid intersection as follows.
+
+Let $X' = X \times \{1, 2, \dots, k\}$, ie, $k$ copies of each element of $X$ with different colors. $M1 = (X', Q)$ where $B \in Q \iff \forall ~1 \le i \le k, ~\{x\mid (x, i) \in B\} \in I_i$, ie, for each color, $B$ is independent. $M2 = (X', W)$ where $B \in W \iff i \not= j \implies \lnot((x, i) \in B \land (x, j) \in B)$, ie, each element is picked by at most one color.
+
+Intersection of $M1$ and $M2$ is the answer for the combinatorial problem of matroid union.
+%\subsection{Edge coloring}
+%
+%\begin{algorithm}[H]
+%\SetAlgoLined
+%\KwData{A graph G}
+%\KwResult{A proper coloring c of the edges of G}
+%Let U := E(G)\;
+%\While{$U \not= \emptyset$}{
+%Let (u,v) be any edge in U\;
+%Let F[1:k] be a maximal fan of u starting at F[1]=v\;
+%Let c be a color that is free on u and d be a color that is free on F[k]\;
+%Invert the $cd_u$ path\;
+%Let $w \in V(G)$ be such that $w \in F, F'=[F[1]...w]$ is a fan and d is free on w\;
+%Rotate F' and set c(u,w)=d\;
+%U := U - {(u,v)}\;
+%}
+%\end{algorithm}
 
 \subsection{Notes}
 When we repeat something and each time we have probability $p$ to succeed then the expected number or tries is $\frac{1}{p}$, till we succeed.
@@ -238,6 +339,5 @@ When we repeat something and each time we have probability $p$ to succeed then t
 $a > b \implies a \mod b < \frac{a}{2}$
 
 \end{multicols}
-
 
 \end{document}
